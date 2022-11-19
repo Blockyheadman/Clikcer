@@ -14,6 +14,7 @@
 
 ## Supported Platforms:
 * Linux/X11
+* macOSX [Follow this install tutorial](https://docs.godotengine.org/en/stable/tutorials/export/running_on_macos.html#app-is-signed-including-ad-hoc-signatures-but-not-notarized)
 * Windows
 * Android
 * Meta Quest 2
