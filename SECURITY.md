@@ -8,6 +8,7 @@ currently being supported with security updates.
 | OS | Supported |
 | ---------- | ------------------ |
 | Linux/X11  | :white_check_mark: |
+| macOS      | :white_check_mark: |
 | Windows    | :white_check_mark: |
 | Android/VR | :white_check_mark: |
 
