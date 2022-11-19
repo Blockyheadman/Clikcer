@@ -1,8 +1,8 @@
 # Clikcer
 ### A PC/Mobile/VR port of Clikcer
 
-[![Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer)](https://img.shields.io/github/v/release/Blockyheadman/Clikcer)
-[![Releases with Pre-Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer?include_prereleases)](https://img.shields.io/github/v/release/Blockyheadman/Clikcer?include_prereleases)
+[![Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer)](https://github.com/Blockyheadman/Clikcer/releases)
+[![Releases with Pre-Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer?include_prereleases)](https://github.com/Blockyheadman/Clikcer/releases)
 
 ## The Code.org game now makes its way onto PC, Mobile and VR! Enjoy a laid-back clicking experience to become the richest Clikcer you know.
 * Achievements
