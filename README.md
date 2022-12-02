@@ -16,7 +16,7 @@
 * macOS [How to run the game.](https://docs.godotengine.org/en/3.5/tutorials/export/running_on_macos.html?highlight=macOS#app-is-signed-including-ad-hoc-signatures-but-not-notarized)
 * Windows
 * Android
-<!-- * Meta Quest 2 -->
+* Meta Quest 2
 
 This project and all its assets are owned and copyrighted by me. You may not reproduce, distribute, or create derivative works of this project.
 
