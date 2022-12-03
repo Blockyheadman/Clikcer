@@ -2,7 +2,7 @@
 ### A PC/Mobile/VR port of Clikcer
 
 [![Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer)](https://github.com/Blockyheadman/Clikcer/releases)
-[![Releases with Pre-Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer?include_prereleases)](https://github.com/Blockyheadman/Clikcer/releases)
+[![Releases with Pre-Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer?include_prereleases&label=pre-release)](https://github.com/Blockyheadman/Clikcer/releases)
 
 [![Total Downloads](https://img.shields.io/github/downloads/Blockyheadman/Clikcer/total?label=total%20downloads)](https://github.com/Blockyheadman/Clikcer/releases)
 <!-- [![Clikcer on Quest 2](https://img.shields.io/badge/Get-On%20Oculus%20Store-blue)](https://www.oculus.com/experiences/quest/5507840142677277/) -->
