@@ -17,7 +17,7 @@
 * macOS [How to run the game.](https://docs.godotengine.org/en/3.5/tutorials/export/running_on_macos.html?highlight=macOS#app-is-signed-including-ad-hoc-signatures-but-not-notarized)
 * Windows
 * Android [How to Install](https://github.com/Blockyheadman/Clikcer/wiki/How-to-install-on..#how-to-install-on-android)
-* Meta Quest 1/2/Pro [How to Install](https://github.com/Blockyheadman/Clikcer/wiki/How-to-install-on..#how-to-install-on-meta-quest-12pro-2)
+* Meta Quest 1/2/Pro [Head to ClikcerVR Instead](https://github.com/Blockyheadman/ClikcerVR)
 
 ### Changes to the license are coming.
 *It will become a [GNU v3](https://choosealicense.com/licenses/gpl-3.0/) license next update.*
