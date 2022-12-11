@@ -1,0 +1,408 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://resources/styles/ClikcerButton/Normal.tres" type="StyleBox" id=1]
+[ext_resource path="res://resources/styles/ClikcerButton/Hover.tres" type="StyleBox" id=2]
+[ext_resource path="res://resources/styles/ClikcerButton/Pressed.tres" type="StyleBox" id=3]
+[ext_resource path="res://scripts/Home.gd" type="Script" id=4]
+[ext_resource path="res://resources/textures/cog.png" type="Texture" id=5]
+[ext_resource path="res://resources/textures/ClikcerButton.png" type="Texture" id=6]
+[ext_resource path="res://resources/audio/Clikc.wav" type="AudioStream" id=7]
+[ext_resource path="res://resources/fonts/ariblk.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://resources/textures/ClikcerButtonHover.png" type="Texture" id=9]
+[ext_resource path="res://resources/textures/cog-hover.png" type="Texture" id=10]
+[ext_resource path="res://resources/styles/PopupPreset.tres" type="Theme" id=11]
+[ext_resource path="res://resources/styles/SmallButtonPreset.tres" type="Theme" id=12]
+[ext_resource path="res://resources/styles/BasicButtonPreset.tres" type="Theme" id=13]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://resources/fonts/ariblk.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 11
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=3]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "ClikcerButtonHover"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ClikcerButton:icon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "ClikcerButtonNormal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ClikcerButton:icon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "SettingsButtonHover"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("SettingsButton:icon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "SettingsButtonNormal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("SettingsButton:icon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
+[node name="Home" type="Control" groups=["Persist"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ClikcerLabel" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 8.0
+margin_right = 152.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Clikcer"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SignedInAs" type="Label" parent="."]
+anchor_left = 0.163
+anchor_top = 0.946
+anchor_right = 0.833
+anchor_bottom = 0.991
+margin_left = 0.129997
+margin_top = -0.0100098
+margin_right = 0.829956
+margin_bottom = 0.164978
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = " Signed In As: ReallyLongUsername12"
+align = 1
+autowrap = true
+
+[node name="VersionLabel" type="Button" parent="."]
+margin_left = 40.0
+margin_top = 48.0
+margin_right = 147.0
+margin_bottom = 76.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 12 )
+text = "Ver: ?.??.??"
+
+[node name="SettingsButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -58.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 58.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+icon = ExtResource( 5 )
+icon_align = 1
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ClikcerButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -83.0
+margin_right = 84.0
+margin_bottom = 83.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/normal = ExtResource( 1 )
+icon = ExtResource( 6 )
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ClikcsPerClickLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.342
+anchor_right = 0.5
+anchor_bottom = 0.342
+margin_left = -220.0
+margin_top = -22.27
+margin_right = 220.0
+margin_bottom = 21.73
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "You get 1 Clikcs per click."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ClikcsCounter" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.631
+anchor_right = 0.5
+anchor_bottom = 0.631
+margin_left = -245.0
+margin_top = -0.235016
+margin_right = 245.0
+margin_bottom = 55.765
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Clikcs: 0"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrades" type="Button" parent="."]
+anchor_left = 0.441
+anchor_top = 0.893
+anchor_right = 0.555
+anchor_bottom = 0.893
+margin_left = -42.59
+margin_top = -27.705
+margin_right = 44.55
+margin_bottom = 28.295
+theme = ExtResource( 13 )
+text = "Upgrades"
+
+[node name="LeaderboardsButton" type="Button" parent="."]
+visible = false
+anchor_left = 0.473
+anchor_top = 0.047
+anchor_right = 0.539
+anchor_bottom = 0.047
+margin_left = -63.77
+margin_top = -24.195
+margin_right = 60.89
+margin_bottom = 23.805
+mouse_default_cursor_shape = 2
+theme = ExtResource( 13 )
+text = "Leaderboards"
+
+[node name="Changelog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -168.0
+margin_top = -228.0
+margin_right = 168.0
+margin_bottom = 228.0
+theme = ExtResource( 11 )
+popup_exclusive = true
+window_title = "Changelog"
+dialog_autowrap = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Changelog"]
+anchor_right = 1.0
+anchor_bottom = 0.925
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -5.80002
+
+[node name="Label" type="Label" parent="Changelog/ScrollContainer"]
+margin_right = 320.0
+margin_bottom = 813.0
+size_flags_horizontal = 3
+text = "Version 0.4.0:
+* Added an auto clicker slowdown
+* Enabled sign in with google (For PC only).
+* Added Upgrades Menu
+* Added Full Sign In Support (For PC. Partially mobile)
+* Added Update Checker
+
+Version 0.3.0:
+* Fixed AutoSave options breaking save file
+* Added Sign In (& Sign in with Google!)
+* Started on leaderboards
+* Added forgot password for account recovery
+* Added guest mode
+* Fixed buttons to have better mouse context
+
+Version 0.2.0:
+* Added Settings Menu
+* Added Changelog
+* Added Saves!
+* Added AutoSave
+* Adjusted mouse hovers to better represent actions
+* Added macOS support!
+
+Version 0.1.0:
+* Made Clikcer button
+* Made Settings button (Not the menu)
+* Made Clikcer count and Clikcs per click labels"
+autowrap = true
+
+[node name="Leaderboards" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.0
+margin_top = -313.0
+margin_right = 220.0
+margin_bottom = 313.0
+popup_exclusive = true
+window_title = "Leaderboards"
+
+[node name="GridContainer" type="HBoxContainer" parent="Leaderboards"]
+anchor_right = 1.0
+anchor_bottom = 0.874
+margin_bottom = -0.124023
+
+[node name="Username" type="RichTextLabel" parent="Leaderboards/GridContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ClikcsScore" type="RichTextLabel" parent="Leaderboards/GridContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="RefreshScores" type="Button" parent="Leaderboards"]
+anchor_left = 0.052
+anchor_top = 0.899
+anchor_right = 0.943
+anchor_bottom = 0.976
+margin_left = 0.119999
+margin_top = 0.225952
+margin_right = 0.0799866
+margin_bottom = 0.0239258
+mouse_default_cursor_shape = 2
+text = "Refresh Leaderboard Scores"
+
+[node name="ClikcerSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ClikcerButtonHover = SubResource( 11 )
+anims/ClikcerButtonNormal = SubResource( 12 )
+anims/SettingsButtonHover = SubResource( 13 )
+anims/SettingsButtonNormal = SubResource( 14 )
+
+[node name="AutoSaveTimer" type="Timer" parent="."]
+
+[node name="ClickSpeedLimiter" type="Timer" parent="."]
+wait_time = 0.055
+one_shot = true
+
+[connection signal="pressed" from="VersionLabel" to="." method="_on_VersionLabel_pressed"]
+[connection signal="focus_exited" from="SettingsButton" to="." method="_on_SettingsButton_focus_exited"]
+[connection signal="mouse_entered" from="SettingsButton" to="." method="_on_SettingsButton_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsButton" to="." method="_on_SettingsButton_mouse_exited"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="focus_exited" from="ClikcerButton" to="." method="_on_ClikcerButton_focus_exited"]
+[connection signal="mouse_entered" from="ClikcerButton" to="." method="_on_ClikcerButton_mouse_entered"]
+[connection signal="mouse_exited" from="ClikcerButton" to="." method="_on_ClikcerButton_mouse_exited"]
+[connection signal="pressed" from="ClikcerButton" to="." method="_on_ClikcerButton_pressed"]
+[connection signal="pressed" from="Upgrades" to="." method="_on_Upgrades_pressed"]
+[connection signal="pressed" from="LeaderboardsButton" to="." method="_on_LeaderboardsButton_pressed"]
+[connection signal="pressed" from="Leaderboards/RefreshScores" to="." method="_on_RefreshScores_pressed"]
+[connection signal="timeout" from="AutoSaveTimer" to="." method="_on_AutoSaveTimer_timeout"]
+[connection signal="timeout" from="ClickSpeedLimiter" to="." method="_on_ClickSpeedLimiter_timeout"]

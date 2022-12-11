@@ -1,0 +1,449 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://resources/textures/BackButton.png" type="Texture" id=1]
+[ext_resource path="res://resources/audio/Clikc.wav" type="AudioStream" id=2]
+[ext_resource path="res://resources/styles/BasicButtonPreset.tres" type="Theme" id=3]
+[ext_resource path="res://resources/textures/BackButtonHover.png" type="Texture" id=4]
+[ext_resource path="res://resources/textures/ClikcerButton.png" type="Texture" id=5]
+[ext_resource path="res://scripts/Upgrades.gd" type="Script" id=6]
+[ext_resource path="res://resources/fonts/ariblk.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 18
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=12]
+size = 21
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 21
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 18
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "ToHomeHover"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToHome:icon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "ToHomeNormal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToHome:icon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+
+[node name="Upgrades" type="Control" groups=["Persist"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+script = ExtResource( 6 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SettingsLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -79.0
+margin_top = 10.0
+margin_right = 57.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Upgrades"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LearnMoreLabel" type="Label" parent="."]
+anchor_left = 0.147
+anchor_top = 0.806
+anchor_right = 0.849
+anchor_bottom = 0.806
+margin_left = -25.03
+margin_top = -16.11
+margin_right = 26.99
+margin_bottom = 15.89
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "Hover or tap cost text to learn more."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ToHome" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 58.0
+margin_bottom = 58.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+icon = ExtResource( 1 )
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade1Button" type="Button" parent="."]
+anchor_left = 0.849
+anchor_top = 0.175
+anchor_right = 0.849
+anchor_bottom = 0.175
+margin_left = -32.01
+margin_top = -31.875
+margin_right = 31.99
+margin_bottom = 32.125
+theme = ExtResource( 3 )
+icon = ExtResource( 5 )
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade1Label" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.151
+anchor_right = 0.539
+anchor_bottom = 0.151
+margin_left = -64.2
+margin_top = -15.435
+margin_right = 63.89
+margin_bottom = 15.565
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Costs ? Clikcs"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade1Count" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.152
+anchor_right = 0.539
+anchor_bottom = 0.152
+margin_left = -64.2
+margin_top = 15.88
+margin_right = 63.89
+margin_bottom = 46.88
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "You own: ?"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade2Button" type="Button" parent="."]
+anchor_left = 0.849
+anchor_top = 0.304
+anchor_right = 0.849
+anchor_bottom = 0.304
+margin_left = -32.01
+margin_top = -32.24
+margin_right = 31.99
+margin_bottom = 31.76
+theme = ExtResource( 3 )
+icon = ExtResource( 5 )
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade2Label" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.28
+anchor_right = 0.539
+anchor_bottom = 0.28
+margin_left = -64.2
+margin_top = -15.8
+margin_right = 63.89
+margin_bottom = 15.2
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "Costs ? Clikcs"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade2Count" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.28
+anchor_right = 0.539
+anchor_bottom = 0.28
+margin_left = -64.2
+margin_top = 16.2
+margin_right = 63.89
+margin_bottom = 47.2
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "You own: ?"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade3Button" type="Button" parent="."]
+anchor_left = 0.849
+anchor_top = 0.432
+anchor_right = 0.849
+anchor_bottom = 0.432
+margin_left = -32.01
+margin_top = -31.92
+margin_right = 31.99
+margin_bottom = 32.08
+theme = ExtResource( 3 )
+icon = ExtResource( 5 )
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade3Label" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.408
+anchor_right = 0.539
+anchor_bottom = 0.408
+margin_left = -64.2
+margin_top = -15.48
+margin_right = 63.89
+margin_bottom = 15.52
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "Costs ? Clikcs"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade3Count" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.409
+anchor_right = 0.539
+anchor_bottom = 0.409
+margin_left = -64.2
+margin_top = 15.835
+margin_right = 63.89
+margin_bottom = 46.835
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "You own: ?"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade4Button" type="Button" parent="."]
+anchor_left = 0.849
+anchor_top = 0.561
+anchor_right = 0.849
+anchor_bottom = 0.561
+margin_left = -32.01
+margin_top = -32.285
+margin_right = 31.99
+margin_bottom = 31.715
+theme = ExtResource( 3 )
+icon = ExtResource( 5 )
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade4Label" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.536
+anchor_right = 0.539
+anchor_bottom = 0.536
+margin_left = -64.2
+margin_top = -15.16
+margin_right = 63.89
+margin_bottom = 15.84
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "Costs ? Clikcs"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade4Count" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.537
+anchor_right = 0.539
+anchor_bottom = 0.537
+margin_left = -64.2
+margin_top = 16.155
+margin_right = 63.89
+margin_bottom = 47.155
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "You own: ?"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade5Button" type="Button" parent="."]
+anchor_left = 0.849
+anchor_top = 0.689
+anchor_right = 0.849
+anchor_bottom = 0.689
+margin_left = -32.01
+margin_top = -31.965
+margin_right = 31.99
+margin_bottom = 32.035
+theme = ExtResource( 3 )
+icon = ExtResource( 5 )
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade5Label" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.665
+anchor_right = 0.539
+anchor_bottom = 0.665
+margin_left = -64.2
+margin_top = -15.525
+margin_right = 63.89
+margin_bottom = 15.475
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "Costs ? Clikcs"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Upgrade5Count" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.666
+anchor_right = 0.539
+anchor_bottom = 0.666
+margin_left = -64.2
+margin_top = 15.79
+margin_right = 63.89
+margin_bottom = 46.79
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "You own: ?"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ClikcsCounter" type="Label" parent="."]
+anchor_left = 0.131
+anchor_top = 0.905
+anchor_right = 0.49
+anchor_bottom = 0.905
+margin_left = -32.19
+margin_top = -43.925
+margin_right = 31.9
+margin_bottom = 44.075
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 17 )
+text = "Clikcs: ?"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ToHomeHover = SubResource( 5 )
+anims/ToHomeNormal = SubResource( 6 )
+
+[node name="ClikcerSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[connection signal="focus_exited" from="ToHome" to="." method="_on_ToHome_focus_exited"]
+[connection signal="mouse_entered" from="ToHome" to="." method="_on_ToHome_mouse_entered"]
+[connection signal="mouse_exited" from="ToHome" to="." method="_on_ToHome_mouse_exited"]
+[connection signal="pressed" from="ToHome" to="." method="_on_ToHome_pressed"]
+[connection signal="pressed" from="Upgrade1Button" to="." method="_on_Upgrade1Button_pressed"]
+[connection signal="mouse_entered" from="Upgrade1Label" to="." method="_on_Upgrade1Label_mouse_entered"]
+[connection signal="mouse_exited" from="Upgrade1Label" to="." method="_on_Upgrade1Label_mouse_exited"]
+[connection signal="pressed" from="Upgrade2Button" to="." method="_on_Upgrade2Button_pressed"]
+[connection signal="mouse_entered" from="Upgrade2Label" to="." method="_on_Upgrade2Label_mouse_entered"]
+[connection signal="mouse_exited" from="Upgrade2Label" to="." method="_on_Upgrade2Label_mouse_exited"]
+[connection signal="pressed" from="Upgrade3Button" to="." method="_on_Upgrade3Button_pressed"]
+[connection signal="mouse_entered" from="Upgrade3Label" to="." method="_on_Upgrade3Label_mouse_entered"]
+[connection signal="mouse_exited" from="Upgrade3Label" to="." method="_on_Upgrade3Label_mouse_exited"]
+[connection signal="pressed" from="Upgrade4Button" to="." method="_on_Upgrade4Button_pressed"]
+[connection signal="mouse_entered" from="Upgrade4Label" to="." method="_on_Upgrade4Label_mouse_entered"]
+[connection signal="mouse_exited" from="Upgrade4Label" to="." method="_on_Upgrade4Label_mouse_exited"]
+[connection signal="pressed" from="Upgrade5Button" to="." method="_on_Upgrade5Button_pressed"]
+[connection signal="mouse_entered" from="Upgrade5Label" to="." method="_on_Upgrade5Label_mouse_entered"]
+[connection signal="mouse_exited" from="Upgrade5Label" to="." method="_on_Upgrade5Label_mouse_exited"]

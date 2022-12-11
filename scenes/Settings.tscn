@@ -1,0 +1,351 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://resources/fonts/ariblk.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/textures/BackButton.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Settings.gd" type="Script" id=3]
+[ext_resource path="res://resources/audio/Clikc.wav" type="AudioStream" id=4]
+[ext_resource path="res://resources/textures/BackButtonHover.png" type="Texture" id=5]
+[ext_resource path="res://resources/styles/PopupPreset.tres" type="Theme" id=6]
+[ext_resource path="res://resources/textures/TickMark.png" type="Texture" id=7]
+[ext_resource path="res://resources/styles/SmallButtonPreset.tres" type="Theme" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=12]
+size = 21
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxLine" id=14]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 4
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=15]
+size = 21
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 1, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.67451, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.67451, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id=5]
+resource_name = "ToHomeHover"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToHome:icon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "ToHomeNormal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToHome:icon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+
+[node name="Settings" type="Control" groups=["Persist"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SettingsLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -68.0
+margin_top = 10.0
+margin_right = 68.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LearnMoreLabel" type="Label" parent="."]
+anchor_left = 0.147
+anchor_top = 0.759
+anchor_right = 0.849
+anchor_bottom = 0.759
+margin_left = -25.03
+margin_top = -31.915
+margin_right = 26.99
+margin_bottom = 32.085
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "Hover or tap option text to learn more."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SignOut" type="Button" parent="."]
+anchor_left = 0.498
+anchor_top = 0.096
+anchor_right = 0.498
+anchor_bottom = 0.096
+margin_left = -60.02
+margin_top = -13.76
+margin_right = 59.98
+margin_bottom = 14.24
+mouse_default_cursor_shape = 2
+theme = ExtResource( 8 )
+text = "Sign Out"
+
+[node name="ToHome" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 58.0
+margin_bottom = 58.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+icon = ExtResource( 2 )
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AutoSaveTimeoutLabel" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.198
+anchor_right = 0.343
+anchor_bottom = 0.198
+margin_left = -64.2
+margin_top = -15.63
+margin_right = 65.93
+margin_bottom = 15.37
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "AutoSave Timeout"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AutoSaveSlider" type="HSlider" parent="."]
+anchor_left = 0.62
+anchor_top = 0.187
+anchor_right = 0.882
+anchor_bottom = 0.21
+margin_left = -31.8
+margin_top = -0.0950012
+margin_right = 31.82
+margin_bottom = 0.149994
+hint_tooltip = "From 5 to 60 seconds"
+mouse_default_cursor_shape = 2
+custom_icons/tick = ExtResource( 7 )
+custom_styles/slider = SubResource( 14 )
+custom_styles/grabber_area = SubResource( 13 )
+min_value = 1.0
+max_value = 60.0
+value = 1.0
+tick_count = 15
+ticks_on_borders = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AutoSaveLabel" type="Label" parent="."]
+anchor_left = 0.18
+anchor_top = 0.28
+anchor_right = 0.343
+anchor_bottom = 0.28
+margin_left = -64.2
+margin_top = -15.8
+margin_right = 63.93
+margin_bottom = 15.2
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "Enable AutoSave"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AutoSaveSwitch" type="CheckButton" parent="."]
+anchor_left = 0.878
+anchor_top = 0.286
+anchor_right = 0.878
+anchor_bottom = 0.286
+margin_left = -38.22
+margin_top = -19.91
+margin_right = 37.78
+margin_bottom = 20.09
+mouse_default_cursor_shape = 2
+pressed = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EraseSaveData" type="Button" parent="."]
+anchor_left = 0.424
+anchor_top = 1.0
+anchor_right = 0.571
+anchor_bottom = 1.0
+margin_left = -190.76
+margin_top = -109.0
+margin_right = 193.21
+margin_bottom = -21.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 11 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
+text = "Erase Save Data"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EraseDataWarning" type="ConfirmationDialog" parent="." groups=["Persist"]]
+margin_left = 48.0
+margin_top = 128.0
+margin_right = 440.0
+margin_bottom = 416.0
+theme = ExtResource( 6 )
+window_title = "Are You Sure??"
+dialog_text = "You're about to reset your save data! To the very beginning! Are you sure you want to do this?"
+dialog_autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ToHomeHover = SubResource( 5 )
+anims/ToHomeNormal = SubResource( 6 )
+
+[node name="ClikcerSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="pressed" from="SignOut" to="." method="_on_SignOut_pressed"]
+[connection signal="focus_exited" from="ToHome" to="." method="_on_ToHome_focus_exited"]
+[connection signal="mouse_entered" from="ToHome" to="." method="_on_ToHome_mouse_entered"]
+[connection signal="mouse_exited" from="ToHome" to="." method="_on_ToHome_mouse_exited"]
+[connection signal="pressed" from="ToHome" to="." method="_on_ToHome_pressed"]
+[connection signal="mouse_entered" from="AutoSaveTimeoutLabel" to="." method="_on_AutoSaveTimeoutLabel_mouse_entered"]
+[connection signal="mouse_exited" from="AutoSaveTimeoutLabel" to="." method="_on_AutoSaveTimeoutLabel_mouse_exited"]
+[connection signal="value_changed" from="AutoSaveSlider" to="." method="_on_AutoSaveSlider_value_changed"]
+[connection signal="mouse_entered" from="AutoSaveLabel" to="." method="_on_AutoSaveLabel_mouse_entered"]
+[connection signal="mouse_exited" from="AutoSaveLabel" to="." method="_on_AutoSaveLabel_mouse_exited"]
+[connection signal="pressed" from="AutoSaveSwitch" to="." method="_on_AutoSaveSwitch_pressed"]
+[connection signal="pressed" from="EraseSaveData" to="." method="_on_EraseSaveData_pressed"]
+[connection signal="confirmed" from="EraseDataWarning" to="." method="_on_EraseDataWarning_confirmed"]
