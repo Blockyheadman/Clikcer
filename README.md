@@ -21,9 +21,5 @@
 * Android [How to Install](https://github.com/Blockyheadman/Clikcer/wiki/How-to-install-on..#how-to-install-on-android)
 * Meta Quest 1/2/Pro [Head to ClikcerVR Instead](https://github.com/Blockyheadman/ClikcerVR)
 
-### Changes to the license are coming.
-*It will become a [GNU v3](https://choosealicense.com/licenses/gpl-3.0/) license next update. Stay tuned for 0.4.0-alpha*
-
-This project and all its assets are owned and copyrighted by me. You may not reproduce, distribute, or create derivative works of this project.
-
-[Copyright Proof](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository#:~:text=You%27re%20under%20no%20obligation%20to%20choose%20a%20license.%20However%2C%20without%20a%20license%2C%20the%20default%20copyright%20laws%20apply%2C%20meaning%20that%20you%20retain%20all%20rights%20to%20your%20source%20code%20and%20no%20one%20may%20reproduce%2C%20distribute%2C%20or%20create%20derivative%20works%20from%20your%20work.)
+### Project License
+*This project uses a [GNU v3](https://choosealicense.com/licenses/gpl-3.0/) license.*
