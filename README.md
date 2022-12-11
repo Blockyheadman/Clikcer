@@ -1,5 +1,5 @@
 # Clikcer
-### A PC/Mobile/VR port of Clikcer
+### A PC/Mobile port of Clikcer
 
 [![Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer)](https://github.com/Blockyheadman/Clikcer/releases)
 [![Releases with Pre-Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer?include_prereleases&label=pre-release)](https://github.com/Blockyheadman/Clikcer/releases)
