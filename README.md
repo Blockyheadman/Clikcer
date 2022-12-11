@@ -6,6 +6,8 @@
 
 [![Total Downloads](https://img.shields.io/github/downloads/Blockyheadman/Clikcer/total?label=total%20downloads)](https://github.com/Blockyheadman/Clikcer/releases)
 
+![Clikcer Icon](resources/icons/AndroidIcon.png)
+
 ## The Code.org game now makes its way onto PC, Mobile and VR! Enjoy a laid-back clicking experience to become the richest Clikcer you know.
 * Achievements
 * Upgrades
