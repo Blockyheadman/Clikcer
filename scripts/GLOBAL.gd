@@ -2,9 +2,12 @@ extends Node
 
 var verMajor = 0
 var verMinor = 4
-var verRev = 0
+var verRev = 1
 var gameVersion = str(verMajor) + "." + str(verMinor) + "." + str(verRev)
 var onlineGameVersion
+var onlineVerMajor
+var onlineVerMinor
+var onlineVerRev
 var seenUpdateWarning := false
 
 var username : String

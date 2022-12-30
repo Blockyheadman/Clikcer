@@ -19,49 +19,42 @@ func load_game():
 		# Get the saved dictionary from the next line in the save file
 		var node_data = parse_json(save_game.get_line())
 
-		if node_data["clikcs"] >= 0:
-			print("Success! 'clikcs' Value exists!")
-			Global.clikcs = node_data["clikcs"]
-			Global.upgrade1Count = node_data["upgrade1count"]
-			Global.upgrade2Count = node_data["upgrade2count"]
-			Global.upgrade3Count = node_data["upgrade3count"]
-			Global.upgrade4Count = node_data["upgrade4count"]
-			Global.upgrade5Count = node_data["upgrade5count"]
-			Global.upgrade1Cost = node_data["upgrade1cost"]
-			Global.upgrade2Cost = node_data["upgrade2cost"]
-			Global.upgrade3Cost = node_data["upgrade3cost"]
-			Global.upgrade4Cost = node_data["upgrade4cost"]
-			Global.upgrade5Cost = node_data["upgrade5cost"]
-			Global.achievement1 = node_data["achievement1"]
-			Global.achievement2 = node_data["achievement2"]
-			Global.achievement3 = node_data["achievement3"]
-			Global.achievement4 = node_data["achievement4"]
-			Global.achievement5 = node_data["achievement5"]
-			Global.achievement1Claimed = node_data["achievement1claimed"]
-			Global.achievement2Claimed = node_data["achievement2claimed"]
-			Global.achievement3Claimed = node_data["achievement3claimed"]
-			Global.achievement4Claimed = node_data["achievement4claimed"]
-			Global.achievement5Claimed = node_data["achievement5claimed"]
-			Global.AutoSaveEnabled = node_data["autosaveenabled"]
-			Global.AutoSaveSliderValue = node_data["autosavetimeout"]
-			if Global.isGuest == false:
-				Global.username = node_data["username"]
-				if Global.username == "":
-					$UsernameInput.popup_centered()
-				if Global.username != "":
-					get_tree().change_scene("res://scenes/Home.tscn")
-			elif Global.isGuest == true:
-				Global.username = node_data["username"]
-				if Global.username == "":
-					$UsernameInput.popup_centered()
-				if Global.username != "":
-					get_tree().change_scene("res://scenes/Home.tscn")
-		if !node_data["clikcs"]:
-			print("save non existant. creating file")
-			if Global.isGuest == false:
+		print("Success! 'clikcs' Value exists!")
+		Global.clikcs = node_data["clikcs"]
+		Global.upgrade1Count = node_data["upgrade1count"]
+		Global.upgrade2Count = node_data["upgrade2count"]
+		Global.upgrade3Count = node_data["upgrade3count"]
+		Global.upgrade4Count = node_data["upgrade4count"]
+		Global.upgrade5Count = node_data["upgrade5count"]
+		Global.upgrade1Cost = node_data["upgrade1cost"]
+		Global.upgrade2Cost = node_data["upgrade2cost"]
+		Global.upgrade3Cost = node_data["upgrade3cost"]
+		Global.upgrade4Cost = node_data["upgrade4cost"]
+		Global.upgrade5Cost = node_data["upgrade5cost"]
+		Global.achievement1 = node_data["achievement1"]
+		Global.achievement2 = node_data["achievement2"]
+		Global.achievement3 = node_data["achievement3"]
+		Global.achievement4 = node_data["achievement4"]
+		Global.achievement5 = node_data["achievement5"]
+		Global.achievement1Claimed = node_data["achievement1claimed"]
+		Global.achievement2Claimed = node_data["achievement2claimed"]
+		Global.achievement3Claimed = node_data["achievement3claimed"]
+		Global.achievement4Claimed = node_data["achievement4claimed"]
+		Global.achievement5Claimed = node_data["achievement5claimed"]
+		Global.AutoSaveEnabled = node_data["autosaveenabled"]
+		Global.AutoSaveSliderValue = node_data["autosavetimeout"]
+		if Global.isGuest == false:
+			Global.username = node_data["username"]
+			if Global.username == "":
 				$UsernameInput.popup_centered()
-			elif Global.isGuest == true:
-				save_game()
+			if Global.username != "":
+				get_tree().change_scene("res://scenes/Home.tscn")
+		elif Global.isGuest == true:
+			Global.username = node_data["username"]
+			if Global.username == "":
+				$UsernameInput.popup_centered()
+			if Global.username != "":
+				get_tree().change_scene("res://scenes/Home.tscn")
 
 	save_game.close()
 

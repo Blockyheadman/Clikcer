@@ -140,16 +140,32 @@ func check_for_updates():
 	http_request.request("https://raw.githubusercontent.com/Blockyheadman/Clikcer/main/game-version.json")
 
 func _http_request_completed(result, response_code, headers, body):
-	var data = JSON.parse(body.get_string_from_utf8())
-	print("online game version (as keypair): "+ str(data.result))
-	Global.onlineGameVersion = str(data.result["version"])
-	print("online game version (as string): " + Global.onlineGameVersion)
-	if Global.gameVersion != Global.onlineGameVersion:
-		OS.alert("A more recent update (" + Global.onlineGameVersion + ") is available at: https://github.com/Blockyheadman/Clikcer/releases")
-		print("Game has a more recent version.")
+	if response_code == 200:
+		var data = JSON.parse(body.get_string_from_utf8())
+		print("online game version (as keypair): "+ str(data.result))
+		Global.onlineGameVersion = str(data.result["version"])
+		print("online game version (as string): " + Global.onlineGameVersion)
+		var splitVersionNumbers = Global.onlineGameVersion.split(".")
+		print(str(Global.onlineGameVersion.split(".")))
+		Global.onlineVerMajor = int(splitVersionNumbers[0])
+		Global.onlineVerMinor = int(splitVersionNumbers[1])
+		Global.onlineVerRev = int(splitVersionNumbers[2])
+		if Global.gameVersion != Global.onlineGameVersion:
+			if Global.onlineVerMajor > Global.verMajor:
+				OS.alert("A more recent update (" + Global.onlineGameVersion + ") is available at: https://github.com/Blockyheadman/Clikcer/releases")
+				print("Game has a more recent version.")
+			if Global.onlineVerMinor > Global.verMinor:
+				OS.alert("A more recent update (" + Global.onlineGameVersion + ") is available at: https://github.com/Blockyheadman/Clikcer/releases")
+				print("Game has a more recent version.")
+			if Global.onlineVerRev > Global.verRev:
+				OS.alert("A more recent update (" + Global.onlineGameVersion + ") is available at: https://github.com/Blockyheadman/Clikcer/releases")
+				print("Game has a more recent version.")
+		else:
+			print("Game is up to date!")
+		Global.seenUpdateWarning = true
 	else:
-		print("Game is up to date!")
-	Global.seenUpdateWarning = true
+		if OS.has_feature("debug"):
+			OS.alert("Response Code " + str(response_code) + "\nCannot find.")
 
 func _on_Upgrades_pressed():
 	$ClikcerSFX.play(0)

@@ -2,6 +2,16 @@ extends Control
 
 func _ready():
 	OS.min_window_size = Vector2(490, 685)
+	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+		$OnscreenKeyboard.visible = true
+		$OnscreenKeyboard.autoShow = true
+		$Email.virtual_keyboard_enabled = false
+		$Password.virtual_keyboard_enabled = false
+		$GoogleLoginPopup/AuthCode.virtual_keyboard_enabled = false
+		$ForgotPassWindow/Email.virtual_keyboard_enabled = false
+	else:
+		$OnscreenKeyboard.visible = false
+		$OnscreenKeyboard.autoShow = false
 	
 	var directory = Directory.new()
 	if Firebase._config["apiKey"] != "":
@@ -22,10 +32,14 @@ func _ready():
 
 func _on_SignInGoogle_pressed():
 	$ClikcerSFX.play(0)
+	$OnscreenKeyboard._hideKeyboard()
 	Firebase.Auth.get_auth_localhost()
-	"""if OS.get_name() == "Android" or OS.get_name() == "X11" or OS.get_name() == "OSX":
+	"""if OS.get_name() == "Windows" or OS.get_name() == "X11" or OS.get_name() == "OSX":
 		Firebase.Auth.get_auth_localhost()
-	if OS.get_name() == "Windows" or OS.get_name() == "iOS":
+	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+		$OnscreenKeyboard._hideKeyboard()
+		$ForgotPassWindow.visible = false
+		$GuestPrompt.visible = false
 		#$GoogleLoginPopup.popup_centered()
 		#Firebase.Auth.set_redirect_uri("http://localhost:8060/")"""
 
@@ -86,6 +100,9 @@ func _on_LoginButton_pressed():
 # forgot pass stuff
 func _on_ForgotPass_pressed():
 	$ClikcerSFX.play(0)
+	$OnscreenKeyboard._hideKeyboard()
+	$GoogleLoginPopup.visible = false
+	$GuestPrompt.visible = false
 	$ForgotPassWindow.popup_centered()
 
 func _on_ResetPass_pressed():
@@ -97,6 +114,9 @@ func _on_ResetPass_pressed():
 # continue as guest
 func _on_Guest_pressed():
 	$ClikcerSFX.play(0)
+	$OnscreenKeyboard._hideKeyboard()
+	$ForgotPassWindow.visible = false
+	$GoogleLoginPopup.visible = false
 	$GuestPrompt.popup_centered()
 
 func _on_Accept_pressed():

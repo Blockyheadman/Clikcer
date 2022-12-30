@@ -283,6 +283,7 @@ theme = ExtResource( 13 )
 text = "Leaderboards"
 
 [node name="Changelog" type="AcceptDialog" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -308,10 +309,14 @@ margin_right = -8.0
 margin_bottom = -5.80002
 
 [node name="Label" type="Label" parent="Changelog/ScrollContainer"]
-margin_right = 320.0
-margin_bottom = 813.0
+margin_right = 310.0
+margin_bottom = 981.0
 size_flags_horizontal = 3
-text = "Version 0.4.0:
+text = "Version 0.4.1:
+* Fixed offline version checker alert from producing null response.
+* Fixed version checker from giving false positive when version number is higher than previous.
+
+Version 0.4.0:
 * Added an auto clicker slowdown
 * Enabled sign in with google (For PC only).
 * Added Upgrades Menu
