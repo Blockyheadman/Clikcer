@@ -1,7 +1,7 @@
 # Clikcer
 ### A PC/Mobile port of Clikcer
 
-## macOS currently has no newer releases. One will be made as soon as possible.
+## UPDATE: macOS now has a supported release! :D
 
 [![Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer)](https://github.com/Blockyheadman/Clikcer/releases)
 [![Releases with Pre-Releases](https://img.shields.io/github/v/release/Blockyheadman/Clikcer?include_prereleases&label=pre-release)](https://github.com/Blockyheadman/Clikcer/releases)
