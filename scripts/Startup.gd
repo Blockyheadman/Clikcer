@@ -135,7 +135,7 @@ func save_and_load_game():
 	
 	load_game()
 
-func _on_LineEdit_text_changed(new_text):
+func _on_LineEdit_text_changed(_new_text):
 	if $UsernameInput/LineEdit.text != "":
 		AcceptDisabled = false
 	else:

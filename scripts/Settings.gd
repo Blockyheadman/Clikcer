@@ -11,7 +11,8 @@ func _ready():
 
 func _on_ToHome_pressed():
 	$ClikcerSFX.play(0)
-	get_tree().change_scene("res://scenes/Home.tscn")
+	Global.transition_scene_left("Settings", "res://scenes/Home.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)
+	#get_tree().change_scene("res://scenes/Home.tscn")
 
 func _on_ToHome_mouse_entered():
 	$AnimationPlayer.play("ToHomeHover")
@@ -133,3 +134,9 @@ func _on_SignOut_pressed():
 
 func signed_out():
 	get_tree().change_scene("res://scenes/Login.tscn")
+
+func _input(event):
+	if event is InputEventScreenDrag:
+		print(event.relative)
+		if event.relative.x >= 35 and !Global.disableSwipe:# and event.index == 1:
+			Global.transition_scene_left("Settings", "res://scenes/Home.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)

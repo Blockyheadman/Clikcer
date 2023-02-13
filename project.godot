@@ -194,12 +194,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Clikcer"
+config/name="Clikcer Reanimated"
 config/description="The game now makes its way natively to PC and Mobile platforms!"
 run/main_scene="res://scenes/Login.tscn"
 config/use_custom_user_dir=true
 boot_splash/image="res://resources/icons/Icon.png"
-boot_splash/bg_color=Color( 1, 1, 1, 1 )
+boot_splash/bg_color=Color( 0.941176, 0.941176, 0.941176, 1 )
 config/icon="res://resources/icons/Icon.png"
 config/windows_native_icon="res://resources/icons/icon.ico"
 

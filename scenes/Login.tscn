@@ -140,9 +140,6 @@ margin_bottom = -25.1151
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Password:"
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="Password" type="LineEdit" parent="."]
 anchor_left = 0.392
@@ -184,9 +181,6 @@ text = "Sign In With Google"
 icon = ExtResource( 3 )
 icon_align = 2
 expand_icon = true
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="RegisterButton" type="Button" parent="."]
 anchor_left = 0.0326531
@@ -198,9 +192,6 @@ margin_bottom = 0.210266
 mouse_default_cursor_shape = 2
 theme = ExtResource( 4 )
 text = "Register"
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="LoginButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -390,6 +381,15 @@ styleHover = SubResource( 7 )
 stylePressed = SubResource( 8 )
 styleNormal = SubResource( 9 )
 font = SubResource( 10 )
+
+[node name="QuitTouchPanel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 6.0
+margin_bottom = 3.0
 
 [connection signal="pressed" from="Guest" to="." method="_on_Guest_pressed"]
 [connection signal="pressed" from="ForgotPass" to="." method="_on_ForgotPass_pressed"]

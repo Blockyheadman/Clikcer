@@ -3,12 +3,14 @@ extends Control
 var disableClikcerButton = false
 
 func _ready():
-	if Global.seenUpdateWarning == false:
-		check_for_updates()
-	
 	$ClikcsPerClickLabel.text = "You get " + str(Global.upgrade1Count + (Global.upgrade2Count*10) + (Global.upgrade3Count*25) + (Global.upgrade4Count*50) + (Global.upgrade5Count*100)) + " Clikcs per click."
 	$ClikcsCounter.text = "Clikcs: " + str(Global.clikcs)
 	$VersionLabel.text = "Ver: " + Global.gameVersion
+	
+	if Global.seenUpdateWarning == false:
+		yield(get_tree().create_timer(1), "timeout")
+		check_for_updates()
+	
 	if Global.AutoSaveEnabled == true:
 		$AutoSaveTimer.start(0)
 		$AutoSaveTimer.autostart = true
@@ -21,7 +23,7 @@ func _ready():
 	else:
 		$SignedInAs.text = "Sign-In not available on this build"
 
-func _process(delta):
+func _process(_delta):
 	$AutoSaveTimer.wait_time = Global.AutoSaveSliderValue
 
 func _on_SettingsButton_mouse_entered():
@@ -55,7 +57,8 @@ func _on_ClickSpeedLimiter_timeout():
 
 func _on_SettingsButton_pressed():
 	$ClikcerSFX.play(0)
-	get_tree().change_scene("res://scenes/Settings.tscn")
+	Global.transition_scene_right("Home", "res://scenes/Settings.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)
+	#get_tree().change_scene("res://scenes/Settings.tscn")
 
 func _on_VersionLabel_pressed():
 	$ClikcerSFX.play(0)
@@ -139,7 +142,7 @@ func check_for_updates():
 
 	http_request.request("https://raw.githubusercontent.com/Blockyheadman/Clikcer/main/game-version.json")
 
-func _http_request_completed(result, response_code, headers, body):
+func _http_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
 		var data = JSON.parse(body.get_string_from_utf8())
 		print("online game version (as keypair): "+ str(data.result))
@@ -169,4 +172,13 @@ func _http_request_completed(result, response_code, headers, body):
 
 func _on_Upgrades_pressed():
 	$ClikcerSFX.play(0)
-	get_tree().change_scene("res://scenes/Upgrades.tscn")
+	Global.transition_scene_bottom("Home", "res://scenes/Upgrades.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)
+	#get_tree().change_scene("res://scenes/Upgrades.tscn")
+
+func _input(event):
+	if event is InputEventScreenDrag:
+		print(event.relative)
+		if event.relative.y <= -35 and Global.disableSwipe == false:# and event.index == 1:
+			Global.transition_scene_bottom("Home", "res://scenes/Upgrades.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)
+		if event.relative.x <= -35 and Global.disableSwipe == false:# and event.index == 1:
+			Global.transition_scene_right("Home", "res://scenes/Settings.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)
