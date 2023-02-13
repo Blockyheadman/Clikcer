@@ -3,7 +3,7 @@ extends Control
 func _ready():
 	pass
 
-func _process(_delta):
+func _process(delta):
 	$ClikcsCounter.text = "Clikcs: " + str(Global.clikcs)
 	
 	$Upgrade1Label.text = "Costs " + str(Global.upgrade1Cost) + " Clikcs"
@@ -74,8 +74,7 @@ func save_game():
 
 func _on_ToHome_pressed():
 	$ClikcerSFX.play(0)
-	#get_tree().change_scene("res://scenes/Home.tscn")
-	Global.transition_scene_top("Upgrades", "res://scenes/Home.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)
+	get_tree().change_scene("res://scenes/Home.tscn")
 
 func _on_ToHome_mouse_entered():
 	$AnimationPlayer.play("ToHomeHover")
@@ -168,9 +167,3 @@ func _on_Upgrade5Button_pressed():
 		save_game()
 	elif Global.clikcs < Global.upgrade5Cost:
 		OS.alert("You need " + str(Global.upgrade5Cost - Global.clikcs) + " more Clikcs to get this upgrade!")
-
-func _input(event):
-	if event is InputEventScreenDrag:
-		print(event.relative)
-		if event.relative.y >= 35 and !Global.disableSwipe:# and event.index == 1:
-			Global.transition_scene_top("Upgrades", "res://scenes/Home.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)
