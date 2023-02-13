@@ -137,7 +137,8 @@ func _on_RefreshScores_pressed():
 
 func check_for_updates():
 	var http_request = HTTPRequest.new()
-	add_child(http_request)
+	add_child(http_request, true)
+	http_request.name = "UpdateChecker"
 	http_request.connect("request_completed", self, "_http_request_completed")
 
 	http_request.request("https://raw.githubusercontent.com/Blockyheadman/Clikcer/main/game-version.json")
@@ -171,6 +172,7 @@ func _http_request_completed(result, response_code, headers, body):
 	else:
 		if OS.has_feature("debug"):
 			OS.alert("Response Code " + str(response_code) + "\nCannot find.")
+	get_node("UpdateChecker").queue_free()
 
 func _on_Upgrades_pressed():
 	$ClikcerSFX.play(0)

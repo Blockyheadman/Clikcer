@@ -78,7 +78,7 @@ func transition_scene_bottom(old_scene : String, new_scene_path : String, time :
 		
 		if get_viewport().get_node(scene_node.name):
 			get_viewport().get_node(scene_node.name).add_child(no_click, true)
-		elif !get_node(scene_node.name):
+		elif !get_viewport().get_node(scene_node.name):
 			var count = 1
 			var new_scene_name = scene_node.name
 			while !get_viewport().get_node(new_scene_name):
@@ -116,15 +116,15 @@ func transition_scene_bottom(old_scene : String, new_scene_path : String, time :
 				count += 1
 			get_viewport().get_node(old_scene_name).queue_free()
 		
-		if get_node(scene_node.name):
-			get_viewport().get_node(scene_node.name).queue_free()
+		if get_viewport().get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).get_node(no_click.name).queue_free()
 		elif !get_viewport().get_node(scene_node.name):
 			var count = 1
 			var new_scene_name = scene_node.name
 			while !get_viewport().get_node(new_scene_name):
 				new_scene_name = scene_node.name + str(count)
 				count += 1
-			get_viewport().get_node(new_scene_name).queue_free()
+			get_viewport().get_node(new_scene_name).get_node(no_click.name).queue_free()
 		
 		OS.window_resizable = true
 		disableSwipe = false
@@ -151,7 +151,7 @@ func transition_scene_top(old_scene : String, new_scene_path : String, time : fl
 		
 		if get_viewport().get_node(scene_node.name):
 			get_viewport().get_node(scene_node.name).add_child(no_click, true)
-		elif !get_node(scene_node.name):
+		elif !get_viewport().get_node(scene_node.name):
 			var count = 1
 			var new_scene_name = scene_node.name
 			while !get_viewport().get_node(new_scene_name):
@@ -189,15 +189,15 @@ func transition_scene_top(old_scene : String, new_scene_path : String, time : fl
 				count += 1
 			get_viewport().get_node(old_scene_name).queue_free()
 		
-		if get_node(scene_node.name):
-			get_viewport().get_node(scene_node.name).queue_free()
+		if get_viewport().get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).get_node(no_click.name).queue_free()
 		elif !get_viewport().get_node(scene_node.name):
 			var count = 1
 			var new_scene_name = scene_node.name
 			while !get_viewport().get_node(new_scene_name):
 				new_scene_name = scene_node.name + str(count)
 				count += 1
-			get_viewport().get_node(new_scene_name).queue_free()
+			get_viewport().get_node(new_scene_name).get_node(no_click.name).queue_free()
 		
 		OS.window_resizable = true
 		disableSwipe = false
@@ -224,7 +224,7 @@ func transition_scene_left(old_scene : String, new_scene_path : String, time : f
 		
 		if get_viewport().get_node(scene_node.name):
 			get_viewport().get_node(scene_node.name).add_child(no_click, true)
-		elif !get_node(scene_node.name):
+		elif !get_viewport().get_node(scene_node.name):
 			var count = 1
 			var new_scene_name = scene_node.name
 			while !get_viewport().get_node(new_scene_name):
@@ -262,15 +262,15 @@ func transition_scene_left(old_scene : String, new_scene_path : String, time : f
 				count += 1
 			get_viewport().get_node(old_scene_name).queue_free()
 		
-		if get_node(scene_node.name):
-			get_viewport().get_node(scene_node.name).queue_free()
+		if get_viewport().get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).get_node(no_click.name).queue_free()
 		elif !get_viewport().get_node(scene_node.name):
 			var count = 1
 			var new_scene_name = scene_node.name
 			while !get_viewport().get_node(new_scene_name):
 				new_scene_name = scene_node.name + str(count)
 				count += 1
-			get_viewport().get_node(new_scene_name).queue_free()
+			get_viewport().get_node(new_scene_name).get_node(no_click.name).queue_free()
 		
 		OS.window_resizable = true
 		disableSwipe = false
@@ -297,7 +297,7 @@ func transition_scene_right(old_scene : String, new_scene_path : String, time : 
 		
 		if get_viewport().get_node(scene_node.name):
 			get_viewport().get_node(scene_node.name).add_child(no_click, true)
-		elif !get_node(scene_node.name):
+		elif !get_viewport().get_node(scene_node.name):
 			var count = 1
 			var new_scene_name = scene_node.name
 			while !get_viewport().get_node(new_scene_name):
@@ -335,15 +335,15 @@ func transition_scene_right(old_scene : String, new_scene_path : String, time : 
 				count += 1
 			get_viewport().get_node(old_scene_name).queue_free()
 		
-		if get_node(scene_node.name):
-			get_viewport().get_node(scene_node.name).queue_free()
+		if get_viewport().get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).get_node(no_click.name).queue_free()
 		elif !get_viewport().get_node(scene_node.name):
 			var count = 1
 			var new_scene_name = scene_node.name
 			while !get_viewport().get_node(new_scene_name):
 				new_scene_name = scene_node.name + str(count)
 				count += 1
-			get_viewport().get_node(new_scene_name).queue_free()
+			get_viewport().get_node(new_scene_name).get_node(no_click.name).queue_free()
 		
 		OS.window_resizable = true
 		disableSwipe = false
