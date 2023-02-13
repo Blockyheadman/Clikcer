@@ -2,7 +2,7 @@ extends Node
 
 var verMajor = 0
 var verMinor = 4
-var verRev = 1
+var verRev = 2
 var gameVersion = str(verMajor) + "." + str(verMinor) + "." + str(verRev)
 var onlineGameVersion
 var onlineVerMajor
