@@ -57,139 +57,293 @@ func _process(_delta):
 
 # Example Transition: Global.transition_scene_*TYPE*("Login", "res://scenes/Home.tscn", 1, Tween.TRANS_SINE, Tween.EASE_OUT)
 func transition_scene_bottom(old_scene : String, new_scene_path : String, time : float, transition_type, ease_type):
-	disableSwipe = true
-	OS.window_resizable = false
-	var scene = load(new_scene_path).instance()
-	get_tree().get_root().add_child(scene, true)
-	
-	var scene_node = get_tree().get_root().get_node(scene.name)
-	#scene_node.rect_size = viewport_size
-	var no_click = Control.new()
-	no_click.rect_size = viewport_size
-	no_click.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	print(viewport_size)
-	print(scene_node.rect_size)
-	
-	var no_click2 = Control.new()
-	no_click2.rect_size = viewport_size
-	no_click2.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	get_parent().get_node(scene_node.name).add_child(no_click, true)
-	get_parent().get_node(old_scene).add_child(no_click2, true)
-	
-	scene_node.rect_position = Vector2(0, viewport_size.y)
-	#scene_node.rect_position = Vector2(viewport_size.x/2, viewport_size.y)
-	
-	var tween = get_tree().create_tween()
-	tween.set_ease(ease_type)
-	tween.set_trans(transition_type)
-	tween.tween_property(scene_node, "rect_position", Vector2(0, 0), time)
-	
-	yield(get_tree().create_timer(time), "timeout")
-	
-	get_viewport().get_node(old_scene).queue_free()
-	get_parent().get_node(scene_node.name).get_node(no_click.name).queue_free()
-	get_parent().get_node(old_scene).get_node(no_click2.name).queue_free()
-	
-	OS.window_resizable = true
-	disableSwipe = false
+	if disableSwipe == false:
+		disableSwipe = true
+		OS.window_resizable = false
+		var scene = load(new_scene_path).instance()
+		get_tree().get_root().add_child(scene, true)
+		
+		var scene_node = get_tree().get_root().get_node(scene.name)
+		#scene_node.rect_size = viewport_size
+		var no_click = Control.new()
+		no_click.rect_size = viewport_size
+		no_click.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		print(viewport_size)
+		print(scene_node.rect_size)
+		
+		var no_click2 = Control.new()
+		no_click2.rect_size = viewport_size
+		no_click2.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		if get_viewport().get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).add_child(no_click, true)
+		elif !get_node(scene_node.name):
+			var count = 1
+			var new_scene_name = scene_node.name
+			while !get_viewport().get_node(new_scene_name):
+				new_scene_name = scene_node.name + str(count)
+				count += 1
+			get_viewport().get_node(new_scene_name).add_child(no_click, true)
+		
+		if get_viewport().get_node(old_scene):
+			get_viewport().get_node(old_scene).add_child(no_click2, true)
+		elif !get_node(old_scene):
+			var count = 1
+			var old_scene_name = old_scene
+			while !get_viewport().get_node(old_scene_name):
+				old_scene_name = old_scene + str(count)
+				count += 1
+			get_viewport().get_node(old_scene_name).add_child(no_click2, true)
+		
+		scene_node.rect_position = Vector2(0, viewport_size.y)
+		#scene_node.rect_position = Vector2(viewport_size.x/2, viewport_size.y)
+		
+		var tween = get_tree().create_tween()
+		tween.set_ease(ease_type)
+		tween.set_trans(transition_type)
+		tween.tween_property(scene_node, "rect_position", Vector2(0, 0), time)
+		
+		yield(get_tree().create_timer(time+0.05), "timeout")
+		
+		if get_viewport().get_node(old_scene):
+			get_viewport().get_node(old_scene).queue_free()
+		elif !get_viewport().get_node(old_scene):
+			var count = 1
+			var old_scene_name = old_scene
+			while !get_viewport().get_node(old_scene_name):
+				old_scene_name = old_scene + str(count)
+				count += 1
+			get_viewport().get_node(old_scene_name).queue_free()
+		
+		if get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).queue_free()
+		elif !get_viewport().get_node(scene_node.name):
+			var count = 1
+			var new_scene_name = scene_node.name
+			while !get_viewport().get_node(new_scene_name):
+				new_scene_name = scene_node.name + str(count)
+				count += 1
+			get_viewport().get_node(new_scene_name).queue_free()
+		
+		OS.window_resizable = true
+		disableSwipe = false
 
 func transition_scene_top(old_scene : String, new_scene_path : String, time : float, transition_type, ease_type):
-	disableSwipe = true
-	OS.window_resizable = false
-	var scene = load(new_scene_path).instance()
-	get_tree().get_root().add_child(scene, true)
-	
-	var scene_node = get_tree().get_root().get_node(scene.name)
-	var no_click = Control.new()
-	no_click.rect_size = viewport_size
-	no_click.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	var no_click2 = Control.new()
-	no_click2.rect_size = viewport_size
-	no_click2.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	get_parent().get_node(scene_node.name).add_child(no_click, true)
-	get_parent().get_node(old_scene).add_child(no_click2, true)
-	
-	scene_node.rect_position = Vector2(0, -viewport_size.y)
-	
-	var tween = get_tree().create_tween()
-	tween.set_ease(ease_type)
-	tween.set_trans(transition_type)
-	tween.tween_property(scene_node, "rect_position", Vector2(0, 0), time)
-	
-	yield(get_tree().create_timer(time), "timeout")
-	get_viewport().get_node(old_scene).queue_free()
-	get_parent().get_node(scene_node.name).get_node(no_click.name).queue_free()
-	get_parent().get_node(old_scene).get_node(no_click2.name).queue_free()
-	
-	OS.window_resizable = true
-	disableSwipe = false
+	if disableSwipe == false:
+		disableSwipe = true
+		OS.window_resizable = false
+		var scene = load(new_scene_path).instance()
+		get_tree().get_root().add_child(scene, true)
+		
+		var scene_node = get_tree().get_root().get_node(scene.name)
+		#scene_node.rect_size = viewport_size
+		var no_click = Control.new()
+		no_click.rect_size = viewport_size
+		no_click.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		print(viewport_size)
+		print(scene_node.rect_size)
+		
+		var no_click2 = Control.new()
+		no_click2.rect_size = viewport_size
+		no_click2.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		if get_viewport().get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).add_child(no_click, true)
+		elif !get_node(scene_node.name):
+			var count = 1
+			var new_scene_name = scene_node.name
+			while !get_viewport().get_node(new_scene_name):
+				new_scene_name = scene_node.name + str(count)
+				count += 1
+			get_viewport().get_node(new_scene_name).add_child(no_click, true)
+		
+		if get_viewport().get_node(old_scene):
+			get_viewport().get_node(old_scene).add_child(no_click2, true)
+		elif !get_node(old_scene):
+			var count = 1
+			var old_scene_name = old_scene
+			while !get_viewport().get_node(old_scene_name):
+				old_scene_name = old_scene + str(count)
+				count += 1
+			get_viewport().get_node(old_scene_name).add_child(no_click2, true)
+		
+		scene_node.rect_position = Vector2(0, -viewport_size.y)
+		#scene_node.rect_position = Vector2(viewport_size.x/2, viewport_size.y)
+		
+		var tween = get_tree().create_tween()
+		tween.set_ease(ease_type)
+		tween.set_trans(transition_type)
+		tween.tween_property(scene_node, "rect_position", Vector2(0, 0), time)
+		
+		yield(get_tree().create_timer(time+0.05), "timeout")
+		
+		if get_viewport().get_node(old_scene):
+			get_viewport().get_node(old_scene).queue_free()
+		elif !get_viewport().get_node(old_scene):
+			var count = 1
+			var old_scene_name = old_scene
+			while !get_viewport().get_node(old_scene_name):
+				old_scene_name = old_scene + str(count)
+				count += 1
+			get_viewport().get_node(old_scene_name).queue_free()
+		
+		if get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).queue_free()
+		elif !get_viewport().get_node(scene_node.name):
+			var count = 1
+			var new_scene_name = scene_node.name
+			while !get_viewport().get_node(new_scene_name):
+				new_scene_name = scene_node.name + str(count)
+				count += 1
+			get_viewport().get_node(new_scene_name).queue_free()
+		
+		OS.window_resizable = true
+		disableSwipe = false
 
 func transition_scene_left(old_scene : String, new_scene_path : String, time : float, transition_type, ease_type):
-	disableSwipe = true
-	OS.window_resizable = false
-	var scene = load(new_scene_path).instance()
-	get_tree().get_root().add_child(scene, true)
-	
-	var scene_node = get_tree().get_root().get_node(scene.name)
-	var no_click = Control.new()
-	no_click.rect_size = viewport_size
-	no_click.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	var no_click2 = Control.new()
-	no_click2.rect_size = viewport_size
-	no_click2.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	get_parent().get_node(scene_node.name).add_child(no_click, true)
-	get_parent().get_node(old_scene).add_child(no_click2, true)
-	
-	scene_node.rect_position = Vector2(-viewport_size.x, 0)
-	
-	var tween = get_tree().create_tween()
-	tween.set_ease(ease_type)
-	tween.set_trans(transition_type)
-	tween.tween_property(scene_node, "rect_position", Vector2(0, 0), time)
-	
-	yield(get_tree().create_timer(time), "timeout")
-	get_viewport().get_node(old_scene).queue_free()
-	get_parent().get_node(scene_node.name).get_node(no_click.name).queue_free()
-	get_parent().get_node(old_scene).get_node(no_click2.name).queue_free()
-	
-	OS.window_resizable = true
-	disableSwipe = false
+	if disableSwipe == false:
+		disableSwipe = true
+		OS.window_resizable = false
+		var scene = load(new_scene_path).instance()
+		get_tree().get_root().add_child(scene, true)
+		
+		var scene_node = get_tree().get_root().get_node(scene.name)
+		#scene_node.rect_size = viewport_size
+		var no_click = Control.new()
+		no_click.rect_size = viewport_size
+		no_click.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		print(viewport_size)
+		print(scene_node.rect_size)
+		
+		var no_click2 = Control.new()
+		no_click2.rect_size = viewport_size
+		no_click2.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		if get_viewport().get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).add_child(no_click, true)
+		elif !get_node(scene_node.name):
+			var count = 1
+			var new_scene_name = scene_node.name
+			while !get_viewport().get_node(new_scene_name):
+				new_scene_name = scene_node.name + str(count)
+				count += 1
+			get_viewport().get_node(new_scene_name).add_child(no_click, true)
+		
+		if get_viewport().get_node(old_scene):
+			get_viewport().get_node(old_scene).add_child(no_click2, true)
+		elif !get_node(old_scene):
+			var count = 1
+			var old_scene_name = old_scene
+			while !get_viewport().get_node(old_scene_name):
+				old_scene_name = old_scene + str(count)
+				count += 1
+			get_viewport().get_node(old_scene_name).add_child(no_click2, true)
+		
+		scene_node.rect_position = Vector2(-viewport_size.x, 0)
+		#scene_node.rect_position = Vector2(viewport_size.x/2, viewport_size.y)
+		
+		var tween = get_tree().create_tween()
+		tween.set_ease(ease_type)
+		tween.set_trans(transition_type)
+		tween.tween_property(scene_node, "rect_position", Vector2(0, 0), time)
+		
+		yield(get_tree().create_timer(time+0.05), "timeout")
+		
+		if get_viewport().get_node(old_scene):
+			get_viewport().get_node(old_scene).queue_free()
+		elif !get_viewport().get_node(old_scene):
+			var count = 1
+			var old_scene_name = old_scene
+			while !get_viewport().get_node(old_scene_name):
+				old_scene_name = old_scene + str(count)
+				count += 1
+			get_viewport().get_node(old_scene_name).queue_free()
+		
+		if get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).queue_free()
+		elif !get_viewport().get_node(scene_node.name):
+			var count = 1
+			var new_scene_name = scene_node.name
+			while !get_viewport().get_node(new_scene_name):
+				new_scene_name = scene_node.name + str(count)
+				count += 1
+			get_viewport().get_node(new_scene_name).queue_free()
+		
+		OS.window_resizable = true
+		disableSwipe = false
 
 func transition_scene_right(old_scene : String, new_scene_path : String, time : float, transition_type, ease_type):
-	disableSwipe = true
-	OS.window_resizable = false
-	var scene = load(new_scene_path).instance()
-	get_tree().get_root().add_child(scene, true)
-	
-	var scene_node = get_tree().get_root().get_node(scene.name)
-	var no_click = Control.new()
-	no_click.rect_size = viewport_size
-	no_click.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	var no_click2 = Control.new()
-	no_click2.rect_size = viewport_size
-	no_click2.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	get_parent().get_node(scene_node.name).add_child(no_click, true)
-	get_parent().get_node(old_scene).add_child(no_click2, true)
-	
-	scene_node.rect_position = Vector2(viewport_size.x, 0)
-	
-	var tween = get_tree().create_tween()
-	tween.set_ease(ease_type)
-	tween.set_trans(transition_type)
-	tween.tween_property(scene_node, "rect_position", Vector2(0, 0), time)
-	
-	yield(get_tree().create_timer(time), "timeout")
-	get_viewport().get_node(old_scene).queue_free()
-	get_parent().get_node(scene_node.name).get_node(no_click.name).queue_free()
-	get_parent().get_node(old_scene).get_node(no_click2.name).queue_free()
-	
-	OS.window_resizable = true
-	disableSwipe = false
+	if disableSwipe == false:
+		disableSwipe = true
+		OS.window_resizable = false
+		var scene = load(new_scene_path).instance()
+		get_tree().get_root().add_child(scene, true)
+		
+		var scene_node = get_tree().get_root().get_node(scene.name)
+		#scene_node.rect_size = viewport_size
+		var no_click = Control.new()
+		no_click.rect_size = viewport_size
+		no_click.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		print(viewport_size)
+		print(scene_node.rect_size)
+		
+		var no_click2 = Control.new()
+		no_click2.rect_size = viewport_size
+		no_click2.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		if get_viewport().get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).add_child(no_click, true)
+		elif !get_node(scene_node.name):
+			var count = 1
+			var new_scene_name = scene_node.name
+			while !get_viewport().get_node(new_scene_name):
+				new_scene_name = scene_node.name + str(count)
+				count += 1
+			get_viewport().get_node(new_scene_name).add_child(no_click, true)
+		
+		if get_viewport().get_node(old_scene):
+			get_viewport().get_node(old_scene).add_child(no_click2, true)
+		elif !get_node(old_scene):
+			var count = 1
+			var old_scene_name = old_scene
+			while !get_viewport().get_node(old_scene_name):
+				old_scene_name = old_scene + str(count)
+				count += 1
+			get_viewport().get_node(old_scene_name).add_child(no_click2, true)
+		
+		scene_node.rect_position = Vector2(viewport_size.x, 0)
+		#scene_node.rect_position = Vector2(viewport_size.x/2, viewport_size.y)
+		
+		var tween = get_tree().create_tween()
+		tween.set_ease(ease_type)
+		tween.set_trans(transition_type)
+		tween.tween_property(scene_node, "rect_position", Vector2(0, 0), time)
+		
+		yield(get_tree().create_timer(time+0.05), "timeout")
+		
+		if get_viewport().get_node(old_scene):
+			get_viewport().get_node(old_scene).queue_free()
+		elif !get_viewport().get_node(old_scene):
+			var count = 1
+			var old_scene_name = old_scene
+			while !get_viewport().get_node(old_scene_name):
+				old_scene_name = old_scene + str(count)
+				count += 1
+			get_viewport().get_node(old_scene_name).queue_free()
+		
+		if get_node(scene_node.name):
+			get_viewport().get_node(scene_node.name).queue_free()
+		elif !get_viewport().get_node(scene_node.name):
+			var count = 1
+			var new_scene_name = scene_node.name
+			while !get_viewport().get_node(new_scene_name):
+				new_scene_name = scene_node.name + str(count)
+				count += 1
+			get_viewport().get_node(new_scene_name).queue_free()
+		
+		OS.window_resizable = true
+		disableSwipe = false

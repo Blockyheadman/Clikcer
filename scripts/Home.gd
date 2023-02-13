@@ -142,7 +142,7 @@ func check_for_updates():
 
 	http_request.request("https://raw.githubusercontent.com/Blockyheadman/Clikcer/main/game-version.json")
 
-func _http_request_completed(_result, response_code, _headers, body):
+func _http_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		var data = JSON.parse(body.get_string_from_utf8())
 		print("online game version (as keypair): "+ str(data.result))
@@ -180,6 +180,7 @@ func _on_Upgrades_pressed():
 func _input(event):
 	if event is InputEventScreenDrag:
 		print(event.relative)
+		print(Global.disableSwipe)
 		if event.relative.y <= -35 and Global.disableSwipe == false:# and event.index == 1:
 			Global.transition_scene_bottom("Home", "res://scenes/Upgrades.tscn", .5, Tween.TRANS_SINE, Tween.EASE_OUT)
 		if event.relative.x <= -35 and Global.disableSwipe == false:# and event.index == 1:
