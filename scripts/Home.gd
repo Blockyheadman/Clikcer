@@ -157,12 +157,14 @@ func _http_request_completed(_result, response_code, _headers, body):
 			if Global.onlineVerMajor > Global.verMajor:
 				OS.alert("A more recent update (" + Global.onlineGameVersion + ") is available at: https://github.com/Blockyheadman/Clikcer/releases")
 				print("Game has a more recent version.")
-			if Global.onlineVerMinor > Global.verMinor:
+			elif Global.onlineVerMajor > Global.verMajor and Global.onlineVerMinor > Global.verMinor:
 				OS.alert("A more recent update (" + Global.onlineGameVersion + ") is available at: https://github.com/Blockyheadman/Clikcer/releases")
 				print("Game has a more recent version.")
-			if Global.onlineVerRev > Global.verRev:
+			elif Global.onlineVerMajor > Global.verMajor and Global.onlineVerMinor > Global.verMinor and Global.onlineVerRev > Global.verRev:
 				OS.alert("A more recent update (" + Global.onlineGameVersion + ") is available at: https://github.com/Blockyheadman/Clikcer/releases")
 				print("Game has a more recent version.")
+			else:
+				print("Game is a newer version!")
 		else:
 			print("Game is up to date!")
 		Global.seenUpdateWarning = true
