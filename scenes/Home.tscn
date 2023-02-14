@@ -310,9 +310,13 @@ margin_bottom = -5.80002
 
 [node name="Label" type="Label" parent="Changelog/ScrollContainer"]
 margin_right = 310.0
-margin_bottom = 1053.0
+margin_bottom = 1149.0
 size_flags_horizontal = 3
-text = "Version 0.4.2:
+text = "Version 0.4.3:
+* Changed Firebase keys.
+* Minimal Increased performance.
+
+Version 0.4.2:
 * Fixed version checker update bug.
 
 Version 0.4.1:
